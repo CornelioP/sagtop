@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sagtop — Swarm Agent Top</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='black'/><text x='2' y='13' font-family='monospace' font-size='13' fill='%2333ff66'>▌</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="crt">
+<header id="top">
+  <span class="brand">▌sagtop<span class="dim">/0.1</span></span>
+  <span class="sep">│</span>
+  <span id="counts"><span class="run">▲ 0 run</span></span>
+  <span class="sep">│</span>
+  <span>win <b id="win">24h</b></span>
+  <span class="sep">│</span>
+  <span id="rate">0.0 ev/s</span>
+  <span class="sep">│</span>
+  <span id="follow" class="dim">follow:off</span>
+  <span class="grow"></span>
+  <span id="link" class="bad">○ CONNECTING</span>
+  <span class="sep">│</span>
+  <span id="clock">--:--:--</span>
+</header>
+
+<main>
+  <div id="cy"></div>
+  <aside id="panel" hidden>
+    <div class="ptitle"><span id="ptitle">node</span><span class="dim">[esc]</span></div>
+    <div id="pbody"></div>
+  </aside>
+  <div id="empty" hidden>
+    <pre>
+  ┌──────────────────────────────────────┐
+  │  no sessions in this window          │
+  │  press <b>t</b> to widen it, or start an agent │
+  └──────────────────────────────────────┘</pre>
+  </div>
+  <div id="boot"><pre id="bootlog"></pre></div>
+  <div id="help" hidden>
+    <pre>
+┌─ keys ───────────────────────────────────────┐
+│  j / k      next / previous node             │
+│  h / l      parent / first child             │
+│  enter      toggle detail panel              │
+│  /          filter  (status:run tool:codex    │
+│             kind:subagent, free text)        │
+│  esc        close panel / clear filter       │
+│  f          follow the newest running node   │
+│  t          cycle window 1h · 24h · 7d · all │
+│  g          fit graph     c   center node    │
+│  s          crt scanlines on/off             │
+│  ?          this help                        │
+├─ legend ─────────────────────────────────────┤
+│  <span class="run">█ running</span>  <span class="idle">idle</span>  <span class="done">done</span>  <span class="err">error</span>          │
+│  ── spawned      ╌╌ forked     br:n rewinds  │
+└──────────────────────────────────────────────┘</pre>
+  </div>
+</main>
+
+<footer id="bar">
+  <span class="cmd" id="cmdline"><span id="prompt">[sagtop]</span><input id="filter" spellcheck="false" autocomplete="off" placeholder=""></span>
+  <span class="grow"></span>
+  <span class="keys"><b>j/k</b> nav <b>h/l</b> up/down <b>⏎</b> detail <b>/</b> filter <b>f</b> follow <b>t</b> window <b>g</b> fit <b>?</b> help</span>
+</footer>
+
+<script src="vendor/cytoscape.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
